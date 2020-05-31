@@ -1,0 +1,79 @@
+<div class="toolbar" role="banner">
+  <img width="40" src="../assets/resources/Images/P.png" />
+  <div class="spacer"></div>
+
+
+  Dimension:
+  <select (change)="changedim($event)"> 
+    <option *ngFor="let dim of dimensions" [selected]="dim === this.takuzu.dimension" >
+      {{dim}}
+    </option>
+  </select>
+  
+  <div class="spacer"></div>
+
+  <button (click)="Generate()">Generate a grid</button>
+  <div class="spacer"></div>
+
+  <button (click)="Solve()">Solve</button>
+
+  <div class="spacer"></div>
+  
+  <a *ngIf="!this.getHelp()" (click)="needHelp()">
+    <img width="40" src="../assets/resources/Images/Help-icon.png" title="Need help">
+  </a>
+  <input *ngIf="this.getHelp()" (click)="removeHelp()" title="remove help" type="image" src="../assets/resources/Images/close.png">
+  
+  <a href="https://www.linkedin.com/in/walid-boukris-179771157/">
+    <img width="40" src="../assets/resources/Images/linkedin.png" title="linkedin">
+  </a>
+</div>
+
+<div class="message" *ngIf="this.getHelp()">
+  <div style="float:left;width:40%;">
+    <table cellpadding="5"  class="center">
+      <tr>
+        <th>Possible modifications</th>
+      </tr>
+    </table>
+    <table cellpadding="50"  class="center">
+      <tr>
+        <th>
+          <img class="help"  src="../assets/resources/Images/help.gif">
+        </th>
+      </tr>
+    </table>
+  </div>
+
+  <div style="float:left;width:60%;">
+    <table cellpadding="5"  class="center">
+      <tr>
+        <th>Rules</th>
+      </tr>
+    </table>
+
+    <li>
+      <b>Each row and each column must contain an equal number of 0s and 1s.</b>
+    </li>
+    <li>
+      <b>More than two of the same digits can't be adjacent</b>
+    </li>
+    <li>
+      <b>Each row and column is unique</b>
+    </li>
+    </div>
+  
+</div>
+
+  
+
+
+<div *ngIf="!this.getHelp()"  class="line">
+  <table class="table" cellpadding="0"  class="center" cellspacing="0">
+    <tr  class="table" *ngFor="let l of getPlateau(); let i = index">
+      <th class="table" *ngFor="let v of l; let j = index" (click)="click(i,j)">
+        <img class="image" src="{{getImg(i,j)}}">
+      </th>
+    </tr>
+  </table>
+</div>
