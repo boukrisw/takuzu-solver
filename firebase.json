@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "takuzu-solver",
+      "public": "dist/takuzu-solver",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}
